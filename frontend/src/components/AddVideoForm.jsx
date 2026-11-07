@@ -73,7 +73,7 @@ function AddVideoForm({ onVideoCreated, apiUrl }) {
         { name: "channel", label: "Channel name", placeholder: "Enter channel name" },
         { name: "channelAvatar", label: "Channel avatar URL", placeholder: "https://example.com/avatar.jpg" },
         { name: "thumbnail", label: "Thumbnail URL", placeholder: "https://example.com/thumbnail.jpg" },
-        { name: "views", label: "Views", placeholder: "450K views" },
+        { name: "views", label: "Views", placeholder: "200, 400K, 1M" },
         { name: "uploadedAt", label: "Upload date", placeholder: "1 week ago" },
         { name: "duration", label: "Duration", placeholder: "12:35" },
         { name: "category", label: "Category", placeholder: "Travel" },

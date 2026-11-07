@@ -36,13 +36,13 @@ const videos = [
   {
     id: 4,
     title: "Relaxing Music for Studying",
-    channel: "Lofi Girl",
+    channel: "Bhai Tutorial",
     channelAvatar: "https://i.pravatar.cc/150?img=15",
-    thumbnail: "https://i.ytimg.com/vi/jfKfPfyJRdk/hqdefault.jpg",
+    thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ283kscUqr3q3yAJsyCQL-2E80j-W2ugxVTVXscY4ftECSKy0voigY5rE&s=10",
     views: "15M views",
     uploadedAt: "3 months ago",
-    duration: "LIVE",
-    category: "Music",
+    duration: "34:19",
+    category: "Tutorial",
   },
   {
     id: 5,

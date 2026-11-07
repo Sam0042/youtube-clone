@@ -23,7 +23,7 @@ const createVideo = (req, res) => {
 
   const errors = {};
 
-  // Validate required text fields
+  // 1. Validate all required string fields
   const requiredFields = {
     title,
     channel,
@@ -31,6 +31,8 @@ const createVideo = (req, res) => {
     uploadedAt,
     duration,
     category,
+    channelAvatar,
+    thumbnail,
   };
 
   Object.entries(requiredFields).forEach(([field, value]) => {
@@ -39,7 +41,7 @@ const createVideo = (req, res) => {
     }
   });
 
-  // Validate image URLs
+  // 2. Validate image URLs
   const urlFields = {
     channelAvatar,
     thumbnail,
@@ -47,22 +49,44 @@ const createVideo = (req, res) => {
 
   Object.entries(urlFields).forEach(([field, value]) => {
     if (typeof value !== "string" || !value.trim()) {
-      errors[field] = `${field} is required and must be a valid URL.`;
       return;
     }
 
     try {
-      const parsedUrl = new URL(value);
+      const parsedUrl = new URL(value.trim());
 
-      if (!["http:", "https:"].includes(parsedUrl.protocol)) {
-        errors[field] = `${field} must use HTTP or HTTPS.`;
+      if (
+        !["http:", "https:"].includes(parsedUrl.protocol) ||
+        !parsedUrl.hostname
+      ) {
+        errors[field] = `${field} must be a valid HTTP or HTTPS URL.`;
       }
     } catch {
       errors[field] = `${field} must be a valid URL.`;
     }
   });
 
-  // Return validation errors
+  // 3. Validate duration (MM:SS or HH:MM:SS)
+  const durationRegex = /^(?:\d+:[0-5]\d|\d+:[0-5]\d:[0-5]\d)$/;
+
+  if (
+    typeof duration === "string" &&
+    duration.trim() &&
+    !durationRegex.test(duration.trim())
+  ) {
+    errors.duration = "duration must use MM:SS or HH:MM:SS format.";
+  }
+
+  // 4. Validate category (must not contain numbers)
+  if (
+    typeof category === "string" &&
+    category.trim() &&
+    /\d/.test(category)
+  ) {
+    errors.category = "category must not contain numbers.";
+  }
+
+  // 5. Return validation errors
   if (Object.keys(errors).length > 0) {
     return res.status(400).json({
       success: false,
@@ -71,7 +95,7 @@ const createVideo = (req, res) => {
     });
   }
 
-  // Create new video
+  // 6. Create new video
   const newVideo = {
     id: Date.now(),
     title: title.trim(),
