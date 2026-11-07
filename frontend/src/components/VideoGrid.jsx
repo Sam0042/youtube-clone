@@ -72,14 +72,11 @@ function VideoGrid() {
 
     return (
         <>
-            <AddVideoForm
-                apiUrl={API_URL}
-                onVideoCreated={handleVideoCreated}
-            />
+
 
             {loading ? (
-                <section className="grid grid-cols-1 gap-x-4 gap-y-8 px-4 pb-8 sm:grid-cols-2 md:px-6 lg:grid-cols-3 2xl:grid-cols-4">
-                    {Array.from({ length: 8 }).map((_, index) => (
+                <section className="grid grid-cols-1 gap-x-4 gap-y-8 px-4 pb-8 sm:grid-cols-2 md:px-6 xl:grid-cols-3 2xl:grid-cols-4">
+                    {Array.from({ length: 9 }).map((_, index) => (
                         <VideoSkeleton key={index} />
                     ))}
                 </section>
@@ -99,12 +96,17 @@ function VideoGrid() {
                     No videos found.
                 </div>
             ) : (
-                <section className="grid grid-cols-1 gap-x-4 gap-y-8 px-4 pb-8 sm:grid-cols-2 md:px-6 lg:grid-cols-3 2xl:grid-cols-4">
+                <section className="grid grid-cols-1 gap-x-4 gap-y-8 px-4 pb-8 sm:grid-cols-2 md:px-6 xl:grid-cols-3 2xl:grid-cols-4">
                     {videos.map((video) => (
                         <VideoCard key={video.id} video={video} />
                     ))}
                 </section>
             )}
+            <AddVideoForm
+                apiUrl={API_URL}
+                onVideoCreated={handleVideoCreated}
+            />
+            <br />
         </>
     );
 }

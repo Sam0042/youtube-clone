@@ -31,11 +31,11 @@ function VideoCard({ video }) {
 
                 {/* Title and Metadata */}
                 <div className="min-w-0 flex-1">
-                    <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-white">
+                    <h3 className="line-clamp-2 cursor-pointer text-sm font-semibold leading-5 text-white">
                         {video.title}
                     </h3>
 
-                    <p className="mt-1 truncate text-xs text-gray-400">
+                    <p className="mt-1 truncate text-xs text-gray-400 hover:text-white">
                         {video.channel}
                     </p>
 
@@ -47,7 +47,7 @@ function VideoCard({ video }) {
                 {/* More Options */}
                 <button
                     aria-label="More video options"
-                    className="h-fit shrink-0 rounded-full p-1 text-white hover:bg-[#272727]"
+                    className="h-fit shrink-0 rounded-full p-1 text-white hover:bg-[#272727] cursor-pointer"
                 >
                     <MoreVertical size={20} />
                 </button>

@@ -18,14 +18,14 @@ function Navbar({ onMenuClick }) {
                 <button
                     onClick={onMenuClick}
                     aria-label="Toggle sidebar"
-                    className="rounded-full p-2 hover:bg-white/10"
+                    className="rounded-full p-2 hover:bg-white/10 cursor-pointer"
                 >
                     <Menu size={26} />
                 </button>
 
                 <div className="flex cursor-pointer items-center gap-1">
-                    <div className="flex h-7 w-9 items-center justify-center rounded-lg bg-[#ff0033]">
-                        <Play size={17} fill="white" className="text-white" />
+                    <div className="flex h-4.5 w-7 items-center justify-center rounded-sm bg-[#ff0033]">
+                        <Play size={10} fill="white" className="text-white" />
                     </div>
 
                     <span className="text-xl font-bold tracking-tighter md:text-2xl">
@@ -56,35 +56,41 @@ function Navbar({ onMenuClick }) {
 
                     <button
                         type="submit"
-                        className="flex h-full w-16 items-center justify-center border-l border-[#303030] bg-white/10 hover:bg-white/20"
+                        className="flex h-full w-16 items-center justify-center border-l border-[#303030] bg-white/10 hover:bg-white/20 cursor-pointer"
                     >
                         <Search size={21} />
                     </button>
                 </form>
 
-                <button className="hidden rounded-full bg-white/10 p-3 hover:bg-white/20 lg:block">
+                <button className="hidden rounded-full bg-white/10 p-3 hover:bg-white/20 lg:block cursor-pointer">
                     <Mic size={20} />
                 </button>
             </div>
 
             {/* Right: Actions */}
             <div className="flex shrink-0 items-center gap-1 md:gap-3">
-                <button className="rounded-full p-2 hover:bg-white/10 md:hidden">
+                <button className="rounded-full p-2 hover:bg-white/10 md:hidden ">
                     <EllipsisVertical size={24} />
                 </button>
 
-                <button className="hidden items-center gap-1 rounded-full bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/20 md:flex">
+                <button className="hidden items-center gap-1 rounded-full bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/20 md:flex cursor-pointer">
                     <Plus size={20} />
                     Create
                 </button>
 
-                <button className="hidden rounded-full p-2 hover:bg-white/10 md:block">
+                <button className="hidden rounded-full p-2 hover:bg-white/10 md:block cursor-pointer">
                     <Bell size={22} />
                 </button>
 
-                <button className="flex items-center gap-2 rounded-full border border-[#3ea6ff] px-1.5 py-2 text-sm font-medium text-[#3ea6ff] hover:bg-[#263850] md:px-4">
-                    <CircleUserRound size={23} />
-                    <span>Sign in</span>
+                <button
+                    aria-label="Profile"
+                    className="h-8 w-8 overflow-hidden rounded-full cursor-pointer"
+                >
+                    <img
+                        src="https://i.pravatar.cc/150?img=12"
+                        alt="Profile"
+                        className="h-full w-full object-cover"
+                    />
                 </button>
             </div>
         </header>

@@ -17,7 +17,10 @@ function App() {
         onClose={() => setSidebarOpen(false)}
       />
 
-      <main className="min-h-screen pt-16">
+      <main
+        className={`min-h-screen pt-16 transition-[padding] duration-300 ${sidebarOpen ? "md:pl-0" : "md:pl-20"
+          }`}
+      >
         <CategoryBar />
         <VideoGrid />
       </main>

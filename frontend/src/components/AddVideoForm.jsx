@@ -80,7 +80,7 @@ function AddVideoForm({ onVideoCreated, apiUrl }) {
     ];
 
     return (
-        <section className="mx-4 mb-8 rounded-xl border border-[#303030] bg-[#181818] p-5 md:mx-6">
+        <section className="mx-4  rounded-xl border border-[#303030] bg-[#181818] p-5 md:mx-6">
             <h2 className="mb-4 text-lg font-semibold text-white">
                 Add a new video
             </h2>

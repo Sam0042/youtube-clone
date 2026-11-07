@@ -16,6 +16,7 @@ import {
     Flag,
     CircleHelp,
     MessageSquareWarning,
+    CircleUserRound,
     X,
 } from "lucide-react";
 
@@ -24,6 +25,7 @@ function Sidebar({ isOpen, onClose }) {
         { icon: House, label: "Home" },
         { icon: Clapperboard, label: "Shorts" },
         { icon: Tv, label: "Subscriptions" },
+        { icon: CircleUserRound, label: "You" },
     ];
 
     const personalLinks = [
@@ -53,7 +55,7 @@ function Sidebar({ isOpen, onClose }) {
             <button
                 key={label}
                 onClick={onClose}
-                className="flex w-full items-center gap-6 rounded-xl px-3 py-2.5 text-left text-sm text-white transition-colors hover:bg-[#272727]"
+                className="flex w-full items-center gap-6 rounded-xl px-3 py-2.5 text-left text-sm text-white transition-colors hover:bg-[#272727] cursor-pointer"
             >
                 <Icon size={22} />
                 <span>{label}</span>
@@ -61,63 +63,71 @@ function Sidebar({ isOpen, onClose }) {
         ));
 
     return (
-        <div
-            className={`fixed inset-0 z-40 transition-[visibility] duration-300 ${isOpen ? "visible" : "invisible delay-300"
-                }`}
-        >
-            {/* Backdrop */}
-            <button
-                aria-label="Close sidebar"
-                onClick={onClose}
-                className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"
-                    }`}
-            />
-
-            {/* Sidebar panel */}
+        <>
+            {/* Collapsed sidebar - desktop only */}
             <aside
-                className={`absolute bottom-0 left-0 top-16 flex w-64 flex-col overflow-y-auto bg-[#0f0f0f] px-3 pb-6 shadow-2xl transition-transform duration-300 ease-in-out sm:w-72 ${isOpen ? "translate-x-0" : "-translate-x-full"
+                className={`fixed bottom-0 left-0 top-16 z-30 hidden w-20 flex-col items-center bg-[#0f0f0f] pt-2 transition-opacity duration-300 md:flex ${isOpen ? "pointer-events-none opacity-0" : "opacity-100"
                     }`}
             >
-                {/* Mobile header */}
-                <div className="flex items-center justify-between border-b border-[#303030] py-3 md:hidden">
-                    <span className="text-sm font-semibold">Menu</span>
+                {mainLinks.map(({ icon: Icon, label }) => (
                     <button
-                        onClick={onClose}
-                        aria-label="Close sidebar"
-                        className="rounded-full p-2 hover:bg-[#272727]"
+                        key={label}
+                        onClick={label === "You" ? onClose : undefined}
+                        className="flex w-full flex-col items-center gap-1 rounded-xl px-1 py-4 text-white transition-colors hover:bg-[#272727] cursor-pointer"
                     >
-                        <X size={21} />
+                        <Icon size={22} />
+                        <span className="text-[10px]">{label}</span>
                     </button>
-                </div>
-
-                <div className="space-y-1 border-b border-[#303030] py-3">
-                    {renderLinks(mainLinks)}
-                </div>
-
-                <div className="space-y-1 border-b border-[#303030] py-3">
-                    <h3 className="px-3 pb-2 text-base font-semibold">You</h3>
-                    {renderLinks(personalLinks)}
-                </div>
-
-                <div className="space-y-1 border-b border-[#303030] py-3">
-                    <h3 className="px-3 pb-2 text-base font-semibold">Explore</h3>
-                    {renderLinks(exploreLinks)}
-                </div>
-
-                <div className="border-b border-[#303030] py-5">
-                    <p className="px-3 text-sm text-white">
-                        Sign in to like videos, comment, and subscribe.
-                    </p>
-                    <button className="ml-3 mt-3 flex items-center gap-2 rounded-full border border-[#3ea6ff] px-3 py-2 text-sm font-medium text-[#3ea6ff] hover:bg-[#263850]">
-                        Sign in
-                    </button>
-                </div>
-
-                <div className="space-y-1 py-3">
-                    {renderLinks(bottomLinks)}
-                </div>
+                ))}
             </aside>
-        </div>
+
+            {/* Expanded sidebar */}
+            <div
+                className={`fixed inset-0 z-40 transition-[visibility] duration-300 ${isOpen ? "visible" : "invisible delay-300"
+                    }`}
+            >
+                <button
+                    aria-label="Close sidebar"
+                    onClick={onClose}
+                    className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"
+                        }`}
+                />
+
+                <aside
+                    className={`absolute bottom-0 left-0 top-16 flex w-64 flex-col overflow-y-auto bg-[#0f0f0f] px-3 pb-6 shadow-2xl transition-transform duration-300 ease-in-out sm:w-72 ${isOpen ? "translate-x-0" : "-translate-x-full"
+                        }`}
+                >
+
+
+                    <div className="space-y-1 border-b border-[#303030] py-3 ">
+                        {renderLinks(mainLinks.slice(0, 3))}
+                    </div>
+
+                    <div className="space-y-1 border-b border-[#303030] py-3">
+                        <h3 className="px-3 pb-2 text-base font-semibold">You</h3>
+                        {renderLinks(personalLinks)}
+                    </div>
+
+                    <div className="space-y-1 border-b border-[#303030] py-3">
+                        <h3 className="px-3 pb-2 text-base font-semibold">Explore</h3>
+                        {renderLinks(exploreLinks)}
+                    </div>
+
+                    {/* <div className="border-b border-[#303030] py-5">
+                        <p className="px-3 text-sm text-white">
+                            Sign in to like videos, comment, and subscribe.
+                        </p>
+                        <button className="ml-3 mt-3 flex items-center gap-2 rounded-full border border-[#3ea6ff] px-3 py-2 text-sm font-medium text-[#3ea6ff] hover:bg-[#263850]">
+                            Sign in
+                        </button>
+                    </div> */}
+
+                    <div className="space-y-1 py-3">
+                        {renderLinks(bottomLinks)}
+                    </div>
+                </aside>
+            </div>
+        </>
     );
 }
 
