@@ -65,17 +65,76 @@ GET /api/videos
 
 ```json
 {
-  "success": true,
-  "data": [
-    {
-      "id": 1,
-      "title": "Example Video",
-      "channel": "Example Channel",
-      "views": 120000,
-      "duration": "12:45",
-      "category": "Gaming"
-    }
-  ]
+    "success": true,
+    "count": 6,
+    "data": [
+        {
+            "id": 1,
+            "title": "Learn React JS in 30 Minutes",
+            "channel": "Programming with Mosh",
+            "channelAvatar": "https://i.pravatar.cc/150?img=12",
+            "thumbnail": "https://i.ytimg.com/vi/SqcY0GlETPk/hqdefault.jpg",
+            "views": "120K views",
+            "uploadedAt": "2 days ago",
+            "duration": "30:15",
+            "category": "Programming"
+        },
+        {
+            "id": 2,
+            "title": "JavaScript Full Course for Beginners",
+            "channel": "freeCodeCamp.org",
+            "channelAvatar": "https://i.pravatar.cc/150?img=13",
+            "thumbnail": "https://i.ytimg.com/vi/PkZNo7MFNFg/hqdefault.jpg",
+            "views": "2.5M views",
+            "uploadedAt": "1 year ago",
+            "duration": "3:26:42",
+            "category": "Programming"
+        },
+        {
+            "id": 3,
+            "title": "Building My Dream Setup 2026",
+            "channel": "TechZone",
+            "channelAvatar": "https://i.pravatar.cc/150?img=14",
+            "thumbnail": "https://i.ytimg.com/vi/4xDzrJKXOOY/hqdefault.jpg",
+            "views": "85K views",
+            "uploadedAt": "5 days ago",
+            "duration": "18:42",
+            "category": "Technology"
+        },
+        {
+            "id": 4,
+            "title": "Relaxing Music for Studying",
+            "channel": "Bhai Tutorial",
+            "channelAvatar": "https://i.pravatar.cc/150?img=15",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ283kscUqr3q3yAJsyCQL-2E80j-W2ugxVTVXscY4ftECSKy0voigY5rE&s=10",
+            "views": "15M views",
+            "uploadedAt": "3 months ago",
+            "duration": "34:19",
+            "category": "Tutorial"
+        },
+        {
+            "id": 5,
+            "title": "Top 10 Most Beautiful Places in the World",
+            "channel": "Travel World",
+            "channelAvatar": "https://i.pravatar.cc/150?img=16",
+            "thumbnail": "https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg",
+            "views": "450K views",
+            "uploadedAt": "1 week ago",
+            "duration": "12:35",
+            "category": "Travel"
+        },
+        {
+            "id": 6,
+            "title": "How I Would Learn Coding If I Started Again",
+            "channel": "Fireship",
+            "channelAvatar": "https://i.pravatar.cc/150?img=17",
+            "thumbnail": "https://i.ytimg.com/vi/NtfbWkxJTHw/hqdefault.jpg",
+            "views": "320K views",
+            "uploadedAt": "3 weeks ago",
+            "duration": "10:20",
+            "category": "Programming"
+        }
+    ]
 }
 ```
 
@@ -98,7 +157,7 @@ Content-Type: application/json
   "channel": "Example Channel",
   "channelAvatar": "https://example.com/avatar.jpg",
   "thumbnail": "https://example.com/thumbnail.jpg",
-  "views": 1500,
+  "views": "15K",
   "uploadedAt": "2 days ago",
   "duration": "10:30",
   "category": "Technology"
@@ -109,19 +168,19 @@ Content-Type: application/json
 
 ```json
 {
-  "success": true,
-  "message": "Video created successfully.",
-  "data": {
-    "id": 1730000000000,
-    "title": "New Video",
-    "channel": "Example Channel",
-    "channelAvatar": "https://example.com/avatar.jpg",
-    "thumbnail": "https://example.com/thumbnail.jpg",
-    "views": 1500,
-    "uploadedAt": "2 days ago",
-    "duration": "10:30",
-    "category": "Technology"
-  }
+    "success": true,
+    "message": "Video created successfully.",
+    "data": {
+        "id": 1794059716892,
+        "title": "New Video",
+        "channel": "Example Channel",
+        "channelAvatar": "https://example.com/avatar.jpg",
+        "thumbnail": "https://example.com/thumbnail.jpg",
+        "views": "15K",
+        "uploadedAt": "2 days ago",
+        "duration": "10:30",
+        "category": "Technology"
+    }
 }
 ```
 
